@@ -26,7 +26,7 @@ public class UserService {
 
     public Result create(UserDto userDto){
         User user = new User();
-        user.setName(userDto.getFull_name());
+        user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setPhone(userDto.getPhone());
         userRepo.save(user);
@@ -37,7 +37,7 @@ public class UserService {
         Optional<User> userOptional = userRepo.findById(id);
         if (userOptional.isPresent()){
             User user = userOptional.get();
-            user.setName(userDto.getFull_name());
+            user.setName(userDto.getName());
             user.setEmail(userDto.getEmail());
             user.setPhone(userDto.getPhone());
             userRepo.save(user);

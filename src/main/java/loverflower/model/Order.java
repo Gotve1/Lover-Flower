@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import loverflower.model.Entity.DeliveryStatus;
 import loverflower.model.Entity.Status;
 
 import java.time.LocalDate;
@@ -38,7 +39,7 @@ public class Order {
     private LocalDate deliveryDate;
 
     @Enumerated(EnumType.STRING)
-    private String deliveryStatus;
+    private DeliveryStatus deliveryStatus;
 
     @Column(nullable = false)
     private String paymentMethod;

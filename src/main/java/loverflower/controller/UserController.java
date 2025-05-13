@@ -16,10 +16,6 @@ public class UserController{
     @Autowired
     UserService userService;
 
-
-
-
-
     @GetMapping
     @PreAuthorize("hasAnyRole('USER','ADMIN','SUPER_ADMIN')")
     public List<User>   getAllUsers(){
