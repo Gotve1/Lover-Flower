@@ -5,7 +5,6 @@ import loverflower.model.Cart;
 import loverflower.model.Result;
 import loverflower.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,33 +19,28 @@ public class CartController {
 
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('USER','ADMIN','SUPER_ADMIN')")
     public List<Cart> getAllCarts() {
         List<Cart> allCarts = cartService.getAllCarts();
         return allCarts;
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('USER','ADMIN','SUPER_ADMIN')")
     public Cart getCartById(@PathVariable Long id) {
         return cartService.getCartById(id);
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('USER','ADMIN','SUPER_ADMIN')")
     public Result addCart(@RequestBody CartDto cartDto) {
         return cartService.create(cartDto);
     }
 
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyRole('USER','ADMIN','SUPER_ADMIN')")
     public Result updateCart(@PathVariable Long id, @RequestBody CartDto cartDto) {
         return cartService.update(id, cartDto);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('USER','ADMIN','SUPER_ADMIN')")
     public Result deleteCart(@PathVariable Long id) {
         return cartService.delete(id);
     }
