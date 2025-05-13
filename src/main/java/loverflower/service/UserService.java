@@ -16,9 +16,6 @@ public class UserService {
     @Autowired
     UserRepo userRepo;
 
-
-
-
     public List<User> getAllUsers() {
         return userRepo.findAll();
     }
@@ -29,11 +26,9 @@ public class UserService {
 
     public Result create(UserDto userDto){
         User user = new User();
-        user.setFull_name(userDto.getFull_name());
+        user.setName(userDto.getFull_name());
         user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
         user.setPhone(userDto.getPhone());
-        user.setAddress(userDto.getAddress());
         userRepo.save(user);
         return new Result(true,"User created successfully");
     }
@@ -42,11 +37,9 @@ public class UserService {
         Optional<User> userOptional = userRepo.findById(id);
         if (userOptional.isPresent()){
             User user = userOptional.get();
-            user.setFull_name(userDto.getFull_name());
+            user.setName(userDto.getFull_name());
             user.setEmail(userDto.getEmail());
-            user.setPassword(userDto.getPassword());
             user.setPhone(userDto.getPhone());
-            user.setAddress(userDto.getAddress());
             userRepo.save(user);
             return new Result(true,"User updated successfully");
         }
