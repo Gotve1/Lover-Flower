@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOVER FLOWER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+
+        body {
+            background-color: #0d1115;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(13, 17, 21, 0.8);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .contact-info {
+            text-align: right;
+        }
+
+        .phone {
+            color: #00cc66;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #00cc66;
+        }
+
+        .hero {
+            height: 100vh;
+            background-color: #0d1115;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            margin-bottom: 80px;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            letter-spacing: 5px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #00cc66;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 2px;
+            text-transform: uppercase;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .catalog-section {
+            padding: 40px 0;
+        }
+
+        .catalog-intro {
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .catalog-item {
+            background-color: rgba(0, 204, 102, 0.1);
+            padding: 30px;
+            border-radius: 4px;
+        }
+
+        .catalog-item h3 {
+            color: #00cc66;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .catalog-item ul {
+            list-style: none;
+        }
+
+        .catalog-item li {
+            margin-bottom: 8px;
+        }
+
+        .catalog-item a {
+            color: #00cc66;
+            text-decoration: none;
+        }
+
+        .section-title {
+            font-size: 36px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .popular-section {
+            padding: 80px 0;
+        }
+
+        .bouquet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .bouquet-card {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .bouquet-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        .bouquet-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(13, 17, 21, 0.8);
+        }
+
+        .bouquet-title {
+            margin-bottom: 10px;
+        }
+
+        .bouquet-price {
+            color: #00cc66;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .order-section {
+            padding: 80px 0;
+        }
+
+        .order-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .order-step {
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #00cc66;
+            border-radius: 50%;
+            line-height: 40px;
+            margin-bottom: 15px;
+        }
+
+        .special-section {
+            padding: 80px 0;
+        }
+
+        .special-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .special-card {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .questions-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .question-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #00cc66;
+            color: #fff;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .gallery-section {
+            padding: 40px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-item {
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        footer {
+            background-color: #0d1115;
+            padding: 60px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <div class="logo">LOVER FLOWER</div>
+            <nav class="nav-menu">
+                <a href="#catalog">Catalog</a>
+                <a href="#delivery">Payment and delivery</a>
+                <a href="#about">About us</a>
+                <a href="#contacts">Our contacts</a>
+                <a href="#faq">FAQ</a>
+                <a href="#blog">Our blog</a>
+            </nav>
+            <div class="header-right">
+                <div class="contact-info">
+                    <p>Tashkent</p>
+                    <p class="phone">+998 (96) 983-47-19</p>
+                </div>
+                <div class="social-icons">
+                    <img src="../figmaResources/whatsup.png" height="25" width="25"/>
+                    <img src="../figmaResources/phone.png" height="25" width="25"/>
+                    <img src="../figmaResources/instagram.png" height="25" width="25"/></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <img class="hero-image" src="https://i.pinimg.com/736x/82/41/2f/82412f6a9a6da540ec8a88b6276af8de.jpg" alt="Красивый букет цветов">
+    <div class="hero-content">
+        <h1 class="hero-title">LOVER FLOWER</h1>
+        <p>We create for those who appreciate the freshness and elegance of flowers</p>
+        <a href="#catalog" class="button">Watch Catalog</a>
+    </div>
+</section>
+
+<section class="catalog-section" id="catalog">
+    <div class="container">
+        <h2 class="section-title">Catalog</h2>
+        <div class="catalog-intro">
+            <p>We have the largest selection of flowers, bouquets, cards and gifts. We will always help you choose a bouquet for any event.</p>
+            <p>We will assemble it and deliver it to any point in the city.</p>
+        </div>
+        <div class="catalog-grid">
+            <div class="catalog-item">
+                <h3>FLOWERS</h3>
+                <ul>
+                    <li><a href="#">Roses</a></li>
+                    <li><a href="#">Prefabricated bouquets</a></li>
+                    <li><a href="#">Mono-bouquets</a></li>
+                    <li><a href="#">Dried flowers</a></li>
+                    <li><a href="#">Compositions</a></li>
+                </ul>
+                <a href="#">Watch all →</a>
+            </div>
+            <div class="catalog-item">
+                <h3>READY-MADE BOUQUETS OF DRIED FLOWERS</h3>
+                <ul>
+                    <li><a href="#">Bouquets</a></li>
+                    <li><a href="#">For interior</a></li>
+                    <li><a href="#">Wedding</a></li>
+                </ul>
+                <a href="#">Watch all →</a>
+            </div>
+            <div class="catalog-item">
+                <h3>EXTRAS</h3>
+                <ul>
+                    <li><a href="#">Balloons</a></li>
+                    <li><a href="#">Toys</a></li>
+                    <li><a href="#">Postcards</a></li>
+                    <li><a href="#">Package</a></li>
+                </ul>
+                <a href="#">Watch all →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="popular-section">
+    <div class="container">
+        <h2 class="section-title">Popular Bouquets</h2>
+        <p>Most loved compositions of our clients</p>
+        <div class="bouquet-grid">
+            <div class="bouquet-card">
+                <img class="bouquet-image" src="https://i.pinimg.com/736x/c0/54/c2/c054c2e6fad04ddf871754d219c74013.jpg" alt="Нежный букет">
+                <div class="bouquet-info">
+                    <h3 class="bouquet-title">Flower of the valley</h3>
+                    <p class="bouquet-price">50.000</p>
+                    <a href="#" class="button">ORDER</a>
+                </div>
+            </div>
+            <div class="bouquet-card">
+                <img class="bouquet-image" src="https://i.pinimg.com/736x/76/92/3f/76923fc4b51895baf0df21dddf0ecd3e.jpg" alt="Воздушный день">
+                <div class="bouquet-info">
+                    <h3 class="bouquet-title">Windy Day</h3>
+                    <p class="bouquet-price">70.000</p>
+                    <a href="#" class="button">ORDER</a>
+                </div>
+            </div>
+            <div class="bouquet-card">
+                <img class="bouquet-image" src="https://i.pinimg.com/736x/d4/e3/c8/d4e3c807d94cf6eba918852ee8316bd9.jpg" alt="Летний день">
+                <div class="bouquet-info">
+                    <h3 class="bouquet-title">Sunny day</h3>
+                    <p class="bouquet-price">100.000</p>
+                    <a href="#" class="button">Order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="order-section" id="delivery">
+    <div class="container">
+        <h2 class="section-title">How to order</h2>
+        <div class="order-steps">
+            <div class="order-step">
+                <div class="step-number">1</div>
+                <p>Step</p>
+                <p>Choose a bouquet and place an order</p>
+            </div>
+            <div class="order-step">
+                <div class="step-number">2</div>
+                <p>Step</p>
+                <p>We will recall for extra details</p>
+            </div>
+            <div class="order-step">
+                <div class="step-number">3</div>
+                <p>Step</p>
+                <p>Pay for the bouquet online or upon receipt</p>
+            </div>
+            <div class="order-step">
+                <div class="step-number">4</div>
+                <p>Step</p>
+                <p>We deliver at the appointed time</p>
+            </div>
+            <div class="order-step">
+                <div class="step-number">5</div>
+                <p>Step</p>
+                <p>Enjoy your beautiful flowers</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="special-section">
+    <div class="container">
+        <h2 class="section-title">A SPECIAL OCCASION?</h2>
+        <p>We know how to keep secrets and will make your surprise unforgettable. Just tell us about the event.</p>
+        <div class="special-card">
+            <img class="special-image" id="special-2" src="https://i.pinimg.com/736x/9c/1b/2e/9c1b2e472c78f89cab6af8d9fa541203.jpg?v=1679107302&/400/300" alt="Особенный повод 2">
+        </div>
+        <div class="special-card">
+            <img class="special-image" id="special-3" src="https://i.pinimg.com/736x/98/9a/49/989a497d23c33438103c0c4873fb4c8a.jpg?v=1679107302&/400/300" alt="Особенный повод 3">
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="#" class="button">DISCUSS DETAILS</a>
+    </div>
+    </div>
+</section>
+
+<section class="questions-section" id="faq">
+    <div class="container">
+        <h2 class="section-title">Any questions?</h2>
+        <p>Leave your contact details and we will contact you shortly.</p>
+        <div class="question-form">
+            <form>
+                <input type="text" class="form-input" placeholder="Name" required>
+                <input type="tel" class="form-input" placeholder="Phone number" required>
+                <input type="email" class="form-input" placeholder="Email" required>
+                <button type="submit" class="button">SEND</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="gallery-section">
+    <div class="container">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img class="gallery-image" id="gallery-1" src="https://i.pinimg.com/736x/46/ba/c6/46bac684dcce17a70e76de9f224c67fe.jpg" alt="Галерея 1">
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" id="gallery-2" src="https://i.pinimg.com/736x/59/05/c2/5905c216dae977bea0b3a3576f6b38c3.jpg" alt="Галерея 2">
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" id="gallery-3" src="https://i.pinimg.com/736x/9b/07/1e/9b071ef6671d3cad7b307f919cd08377.jpg" alt="Галерея 3">
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" id="gallery-4" src="https://i.pinimg.com/736x/19/5e/c6/195ec613b30ad5fa91f162659067998e.jpg" alt="Галерея 4">
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <div class="social-icons" style="justify-content: center;">
+                <img src="../figmaResources/whatsup.png" height="25" width="25"/>
+                <img src="../figmaResources/phone.png" height="25" width="25"/>
+                <img src="../figmaResources/instagram.png" height="25" width="25"/></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="contacts">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>Catalog</h4>
+                <ul>
+                    <li><a href="#">Prefabricated bouquets</a></li>
+                    <li><a href="#">Mono-bouquets</a></li>
+                    <li><a href="#">Roses</a></li>
+                    <li><a href="#">Compositions</a></li>
+                    <li><a href="#">Individual orders</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Bouquets</h4>
+                <ul>
+                    <li><a href="#">For the girl</a></li>
+                    <li><a href="#">For the man</a></li>
+                    <li><a href="#">For the wife</a></li>
+                    <li><a href="#">For a colleague</a></li>
+                    <li><a href="#">For mom</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Delivery</h4>
+                <ul>
+                    <li><a href="#">Payment</a></li>
+                    <li><a href="#">Delivery</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="#">Question-Answer</a></li>
+                    <li><a href="#">For corporate clients</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About us</h4>
+                <ul>
+                    <li><a href="#">About company</a></li>
+                    <li><a href="#">Our team</a></li>
+                    <li><a href="#">Our blog</a></li>
+                    <li><a href="#">Review</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contacts</h4>
+                    <li><a href="tel:+998969834719" class="phone">+998 (96) 983-47-19</a></li>
+                    <li><a href="mailto:info@loverflower.ru">info@loverflower.ru</a></li>
+                    <li>Tashkent</li>
+                </ul>
+                <div class="social-icons" style="margin-top: 20px;">
+                    <img src="../figmaResources/whatsup.png" height="25" width="25"/>
+                    <img src="../figmaResources/phone.png" height="25" width="25"/>
+                    <img src="../figmaResources/instagram.png" height="25" width="25"/></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© Lover Flower | 2025</p>
+            <p>Privacy policy</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // JavaScript to handle image upload functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // List of all image elements that should accept file uploads
+        const imageElements = [
+            document.getElementById('hero-image'),
+            document.getElementById('bouquet-1'),
+            document.getElementById('bouquet-2'),
+            document.getElementById('bouquet-3'),
+            document.getElementById('special-1'),
+            document.getElementById('special-2'),
+            document.getElementById('special-3'),
+            document.getElementById('gallery-1'),
+            document.getElementById('gallery-2'),
+            document.getElementById('gallery-3'),
+            document.getElementById('gallery-4')
+        ];
+    });
+
+    // Function to make POST request
+    function submitUserData(name, phone, email) {
+        return fetch('http://localhost:8080/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: phone,
+                email: email
+            })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                throw error;
+            });
+    }
+
+    // Add event listener when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('.question-form form');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Get input values
+            const nameInput = form.querySelector('input[placeholder="Имя"]');
+            const phoneInput = form.querySelector('input[placeholder="Телефон"]');
+            const emailInput = form.querySelector('input[placeholder="Email"]');
+
+            // Call the submitUserData function
+            submitUserData(nameInput.value, phoneInput.value, emailInput.value)
+                .then(response => {
+                    console.log('Success:', response);
+                    alert('Your details were sent successfully. We will contact you shortly!');
+                    form.reset(); // Clear the form
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again later.');
+                });
+        });
+    });
+
+</script>
+</body>
+</html>
