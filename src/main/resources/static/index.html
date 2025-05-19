@@ -667,9 +667,9 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault(); // Prevent default form submission
 
-            // Get input values
-            const nameInput = form.querySelector('input[placeholder="Имя"]');
-            const phoneInput = form.querySelector('input[placeholder="Телефон"]');
+            // Get input values, pay attention on these constants, they are should have same name as placeholders on inputs
+            const nameInput = form.querySelector('input[placeholder="Name"]');
+            const phoneInput = form.querySelector('input[placeholder="Phone number"]');
             const emailInput = form.querySelector('input[placeholder="Email"]');
 
             // Call the submitUserData function
