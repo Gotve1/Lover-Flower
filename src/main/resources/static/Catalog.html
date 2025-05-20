@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Catalog</title>
+    <style>
+
+        * {
+            font-family: 'Times New Roman', serif;
+        }
+
+        body {
+            background-color: #0d1115;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .info-pane {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            color: #fff; /* White text */
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+        }
+
+        .info-pane h2 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+        }
+
+        .info-pane p {
+            margin: 0 0 15px;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .info-button {
+            background-color: #00cc66; /* Button color */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        header {
+            background-color: rgba(21, 28, 34, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .gallery-section {
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            overflow: hidden;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        .social-icons {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            padding: 20px;
+        }
+        .contact-info {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            padding: 20px;
+            text-align: right;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            //background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            color: #fff; /* White text */
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Flower Catalog</h1>
+    <h2>All the best flowers individually for you are shown on this page</h2>
+
+    <div class="logo">
+        <h1>Flower Lover</h1>
+    </div>
+
+    <div class="header-right">
+        <div class="contact-info">
+            <p>Tashkent</p>
+            <p class="phone">+998 (96) 983-47-19</p>
+        </div>
+        <div class="social-icons">
+            <img src="../../../../figmaResources/whatsup.png" height="25" width="25"/>
+            <img src="../../../../figmaResources/phone.png" height="25" width="25"/>
+            <img src="../../../../figmaResources/instagram.png" height="25" width="25"/></div>
+    </div>
+</header>
+
+<section class="gallery-section">
+    <div class="container">
+        <div class="gallery-grid">
+            <!-- Flower Cards -->
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/34/5b/8c/345b8c7a8e795fcb45f5873e6d32481f.jpg" alt="Flower 1">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/d4/e3/c8/d4e3c807d94cf6eba918852ee8316bd9.jpg" alt="Flower 2">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/89/a0/ad/89a0ad1b5efe27617eae3d78c7b93bc6.jpg" alt="Flower 3">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/d9/ed/ed/d9eded63a73ddd9357c56fc814be1b7b.jpg" alt="Flower 4">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/d9/7b/44/d97b44d095fc62e9dd75122d9bd1e578.jpg" alt="Flower 5">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/67/4a/11/674a11be9290c73cc7d40966464c3868.jpg" alt="Flower 6">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/a5/ad/d4/a5add4bd788ca19c661d234171c28728.jpg" alt="Flower 7">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/ba/a6/65/baa6655f5612419086dde58413200707.jpg" alt="Flower 8">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/5f/b5/91/5fb591027bf420d1c71f20f50201a1a2.jpg" alt="Flower 9">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/b5/c7/db/b5c7dbdaae658afda3e3215281d8b324.jpg" alt="Flower 10">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/da/86/a0/da86a0044a66f02b342bd66db123f216.jpg" alt="Flower 11">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/0f/50/7c/0f507ca23864a0572670c21e0fcaf171.jpg" alt="Flower 12">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/f3/29/62/f329627b74900d7a50eaf44d54b94bf9.jpg" alt="Flower 12">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/e5/63/aa/e563aad39f6bc8a0ae060cb47c4ed597.jpg" alt="Flower 12">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-image" src="https://i.pinimg.com/736x/1b/c9/a8/1bc9a805340af53fa9f057a88d4b549a.jpg" alt="Flower 12">
+                <div class="gallery-item">
+                    <h2>Flower Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                    <button class="info-button">Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© Lover Flower | 2025</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded successfully!');
+    });
+</script>
+</body>
+</html>
