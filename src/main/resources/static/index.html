@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOVER FLOWER</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Sofia', sans-serif;
+            font-family: "JetBrains Mono", sans-serif;
         }
 
         body {
@@ -36,7 +35,13 @@
             user-select: none;
         }
 
+        header .container {
+            max-width: 100%;
+            padding: 0 40px;
+        }
+
         .header-inner {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,6 +50,7 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
+            white-space: nowrap;
         }
 
         .nav-menu {
@@ -106,7 +112,7 @@
         }
         .hero-image {
             position: absolute;
-            top: 0;
+            top: 75px;
             left: 0;
             width: 100%;
             height: 100%;
@@ -290,6 +296,8 @@
             height: 150px;
             overflow: hidden;
             user-select: none;
+            transition: transform 1s cubic-bezier(.25,.8,.25,1);
+            will-change: transform;
         }
 
         .gallery-image {
@@ -595,6 +603,25 @@
             document.getElementById('gallery-3'),
             document.getElementById('gallery-4')
         ];
+    });
+
+    document.querySelectorAll('.gallery-item, .bouquet-card').forEach(item => {
+        item.addEventListener('mousemove', e => {
+            item.style.transition = 'transform 0.15s cubic-bezier(.25,.8,.25,1)';
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const maxAngle = 5;
+            let rotateX = (-y / (rect.height / 2)) * maxAngle;
+            let rotateY = (x / (rect.width / 2)) * maxAngle;
+            rotateX = Math.max(-maxAngle, Math.min(maxAngle, rotateX));
+            rotateY = Math.max(-maxAngle, Math.min(maxAngle, rotateY));
+            item.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        item.addEventListener('mouseleave', () => {
+            item.style.transition = 'transform 0.5s cubic-bezier(.25,.8,.25,1)';
+            item.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg)';
+        });
     });
 
     // Function to make POST request

@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flower Catalog</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
     <style>
 
         * {
-            font-family: 'Sofia', sans-serif;
+            font-family: "JetBrains Mono", sans-serif;
         }
 
         body {
@@ -50,18 +52,37 @@
             backdrop-filter: blur(10px);
         }
 
+        header .container {
+            max-width: 100%;
+            padding: 0 40px;
+        }
+
         header h1 {
             margin: 0;
             font-size: 2em;
         }
 
+        .header-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header-inner {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .gallery-section {
-            padding-top: 165px;
+            padding-top: 130px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         .gallery-grid {
@@ -84,6 +105,11 @@
             display: block;
         }
 
+        .phone {
+            color: #00cc66;
+            font-weight: bold;
+        }
+
         footer {
             background-color: rgba(21, 28, 34, 0.8);
             text-align: center;
@@ -98,52 +124,55 @@
         }
 
         .social-icons {
-            position: absolute;
-            top: 80px;
-            right: 20px;
-            padding: 20px;
+            display: flex;
+            gap: 10px;
             user-select: none;
         }
         .contact-info {
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            padding: 20px;
             text-align: right;
         }
 
         .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            //background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
             color: #fff; /* White text */
             padding: 20px;
             border-radius: 8px;
+            font-weight: bold;
+            font-size: 10px;
             max-width: 300px;
             user-select: none;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #fff; /* White text */
+            font-size: 32px;
+            font-weight: bold;
+            padding: 10px 20px;
+            text-transform: uppercase;
         }
 
     </style>
 </head>
 <body>
 <header>
-    <h1>Flower Catalog</h1>
-    <h2>All the best flowers individually for you are shown on this page</h2>
-
-    <div class="logo">
-        <h1>Flower Lover</h1>
-    </div>
-
-    <div class="header-right">
-        <div class="contact-info">
-            <p>Tashkent</p>
-            <p class="phone">+998 (96) 983-47-19</p>
-        </div>
-        <div class="social-icons">
-            <img src="../../../../figmaResources/whatsup.png" height="25" width="25" draggable="false"/>
-            <img src="../../../../figmaResources/phone.png" height="25" width="25" draggable="false"/>
-            <img src="../../../../figmaResources/instagram.png" height="25" width="25" draggable="false"/>
+    <div class="container">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="/index.html">Lover Flower</a>
+            </div>
+            <div class="header-center">
+                <h1>Flower Catalog</h1>
+            </div>
+            <div class="header-right">
+                <div class="contact-info">
+                    <p>Tashkent</p>
+                    <p class="phone">+998 (96) 983-47-19</p>
+                </div>
+                <div class="social-icons">
+                    <img src="../../../../figmaResources/whatsup.png" height="25" width="25" draggable="false"/>
+                    <img src="../../../../figmaResources/phone.png" height="25" width="25" draggable="false"/>
+                    <img src="../../../../figmaResources/instagram.png" height="25" width="25" draggable="false"/></div>
+            </div>
         </div>
     </div>
 </header>
@@ -288,6 +317,26 @@
     document.addEventListener('DOMContentLoaded', function() {
         console.log('Page loaded successfully!');
     });
+
+    document.querySelectorAll('.gallery-image').forEach(item => {
+        item.addEventListener('mousemove', e => {
+            item.style.transition = 'transform 0.15s cubic-bezier(.25,.8,.25,1)';
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const maxAngle = 15;
+            let rotateX = (-y / (rect.height / 2)) * maxAngle;
+            let rotateY = (x / (rect.width / 2)) * maxAngle;
+            rotateX = Math.max(-maxAngle, Math.min(maxAngle, rotateX));
+            rotateY = Math.max(-maxAngle, Math.min(maxAngle, rotateY));
+            item.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        item.addEventListener('mouseleave', () => {
+            item.style.transition = 'transform 0.5s cubic-bezier(.25,.8,.25,1)';
+            item.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg)';
+        });
+    });
+
 </script>
 </body>
 </html>
