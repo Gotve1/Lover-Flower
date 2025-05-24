@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place an order</title>
+    <style>
+
+        * {
+            font-family: "JetBrains Mono", sans-serif;
+        }
+
+        .contact-information {
+            user-select: none;
+            position: absolute;
+            top: 10px;
+            right: 158px;
+            text-align: right;
+            margin: 0;
+        }
+
+        .contact-information p {
+            margin: 16px;
+            font-size: 16px;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .social-icons {
+            user-select: none;
+            position: absolute;
+            top: 40px;
+            right: 59px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .phone {
+            color: #00cc66;
+            font-weight: bold;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+        }
+
+        .logo {
+            color: #fff; /* White text */
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 10px;
+            max-width: 300px;
+            user-select: none;
+        }
+
+        .logo a {
+            display: inline-block;;
+            margin-top: 35px;
+            margin-left: 35px;
+            text-decoration: none;
+            color: #fff; /* White text */
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            position: fixed;
+        }
+
+        .header-container {
+            position: relative;
+            width: 100vw;
+            height: 105px;
+            z-index: 1000;
+            background-color: rgba(21, 28, 34, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <a href="/index.html">Lover Flower</a>
+        </div>
+        <div class="center">
+            <p>Place an order</p>
+        </div>
+        <div class="contact-information">
+            <p>Tashkent</p>
+            <p class="phone">+998 (96) 983-47-19</p>
+        </div>
+        <div class="social-icons">
+            <img src="figmaResources/whatsup.png" height="25" width="25" draggable="false"/>
+            <img src="figmaResources/phone.png" height="25" width="25" draggable="false"/>
+            <img src="figmaResources/instagram.png" height="25" width="25" draggable="false"/>
+        </div>
+    </div>
+</header>
+
+<img src="figmaResources/Главная.png" class="image" height="6731" width="1440"/></body>
+
+</body>
+</html>
