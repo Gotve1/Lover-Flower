@@ -9,6 +9,39 @@
             font-family: "JetBrains Mono", sans-serif;
         }
 
+        body {
+            background-color: #0d1115;
+        }
+
+        .details-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+             /* Adjust this value as needed */
+            min-height: 100vh;
+            z-index: 1;
+        }
+
+        .details-container form {
+            margin-right: 512px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input[type="text"] {
+            color: #fff;
+            width: 300px;
+            height: 50px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #00cc66;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+        }
+
         .contact-information {
             user-select: none;
             position: absolute;
@@ -18,9 +51,45 @@
             margin: 0;
         }
 
+        .city {
+            color: white;
+        }
+
         .contact-information p {
             margin: 16px;
             font-size: 16px;
+        }
+
+        .order-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #selected-flowers {
+            display: grid;
+            position: absolute;
+            margin-left: 512px;
+            margin-top: 128px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            align-items: start;
+            min-width: 260px;
+            max-width: 400px;
+        }
+
+        #selected-flowers .flower-card {
+            background: #222;
+            padding: 10px;
+            border-radius: 8px;
+            color: #fff;
+            text-align: center;
         }
 
         .center {
@@ -44,14 +113,17 @@
             gap: 10px;
         }
 
+        .flower-1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-bottom: 200px;
+            user-select: none;
+        }
+
         .phone {
             color: #00cc66;
             font-weight: bold;
-        }
-
-        .image {
-            width: 100%;
-            height: auto;
         }
 
         .logo {
@@ -81,13 +153,13 @@
 
         header {
             position: fixed;
+            z-index: 1000;
         }
 
         .header-container {
             position: relative;
             width: 100vw;
             height: 105px;
-            z-index: 1000;
             background-color: rgba(21, 28, 34, 0.8);
             backdrop-filter: blur(10px);
         }
@@ -104,7 +176,7 @@
             <p>Place an order</p>
         </div>
         <div class="contact-information">
-            <p>Tashkent</p>
+            <p class="city" >Tashkent</p>
             <p class="phone">+998 (96) 983-47-19</p>
         </div>
         <div class="social-icons">
@@ -115,7 +187,62 @@
     </div>
 </header>
 
-<img src="figmaResources/Главная.png" class="image" height="6731" width="1440"/></body>
 
+<img src="figmaResources/image%20147.svg" class="flower-1">
+
+<!-- Inside <body> -->
+<div class="order-content">
+    <div class="details-container">
+        <form>
+            <input type="text" placeholder="Name*" required>
+            <input type="text" placeholder="Phone number*" required>
+            <input type="text" placeholder="recipient's phone number*" required>
+            <input type="text" placeholder="Email">
+            <input type="text" placeholder="recipient's Email">
+            <input type="text" placeholder="Address*" required>
+        </form>
+    </div>
+    <div id="selected-flowers"></div>
+</div>
+
+
+<script>
+    // Example flower data (should match your catalog)
+    const flowers = [
+        { id: "1", name: "Lily of the valley", img: "https://i.pinimg.com/736x/34/5b/8c/345b8c7a8e795fcb45f5873e6d32481f.jpg" },
+        { id: "2", name: "Dahila", img: "https://i.pinimg.com/736x/d4/e3/c8/d4e3c807d94cf6eba918852ee8316bd9.jpg" },
+        { id: "3", name: "Zinnia", img: "https://i.pinimg.com/736x/89/a0/ad/89a0ad1b5efe27617eae3d78c7b93bc6.jpg" },
+        { id: "4", name: "Poppy", img: "https://i.pinimg.com/736x/d9/ed/ed/d9eded63a73ddd9357c56fc814be1b7b.jpg" },
+        { id: "4", name: "African Daisy", img: "https://i.pinimg.com/736x/d9/7b/44/d97b44d095fc62e9dd75122d9bd1e578.jpg" },
+        { id: "5", name: "Azalea", img: "https://i.pinimg.com/736x/67/4a/11/674a11be9290c73cc7d40966464c3868.jpg" },
+        { id: "6", name: "Chrysanthemum", img: "https://i.pinimg.com/736x/a5/ad/d4/a5add4bd788ca19c661d234171c28728.jpg" },
+        { id: "7", name: "Blossom", img: "https://i.pinimg.com/736x/ba/a6/65/baa6655f5612419086dde58413200707.jpg" },
+        { id: "8", name: "Daffodil", img: "https://i.pinimg.com/736x/5f/b5/91/5fb591027bf420d1c71f20f50201a1a2.jpg" },
+        { id: "9", name: "Amaryllis", img: "https://i.pinimg.com/736x/b5/c7/db/b5c7dbdaae658afda3e3215281d8b324.jpg" },
+        { id: "10", name: "Aster", img: "https://i.pinimg.com/736x/da/86/a0/da86a0044a66f02b342bd66db123f216.jpg" },
+        { id: "11", name: "Begonia", img: "https://i.pinimg.com/736x/0f/50/7c/0f507ca23864a0572670c21e0fcaf171.jpg" },
+        { id: "12", name: "Calla", img: "https://i.pinimg.com/736x/f3/29/62/f329627b74900d7a50eaf44d54b94bf9.jpg" },
+        { id: "13", name: "Carnation", img: "https://i.pinimg.com/736x/e5/63/aa/e563aad39f6bc8a0ae060cb47c4ed597.jpg" },
+        { id: "14", name: "Delphinium", img: "https://i.pinimg.com/736x/1b/c9/a8/1bc9a805340af53fa9f057a88d4b549a.jpg" }
+    ];
+
+    // Replace renderSelectedFlowers with this:
+    function renderSelectedFlowers() {
+        const selectedIds = JSON.parse(localStorage.getItem('selectedFlowerIds') || '[]');
+        const container = document.getElementById('selected-flowers');
+        container.innerHTML = '';
+        flowers.filter(f => selectedIds.includes(f.id)).forEach(flower => {
+            const card = document.createElement('div');
+            card.className = 'flower-card';
+            card.innerHTML = `
+            <img src="${flower.img}" alt="${flower.name}" width="100" height="100" style="border-radius:8px;"><br>
+            <span>${flower.name}</span>
+        `;
+            container.appendChild(card);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderSelectedFlowers);
+</script>
 </body>
 </html>
