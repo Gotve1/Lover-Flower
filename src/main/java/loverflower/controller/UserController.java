@@ -1,10 +1,10 @@
 package loverflower.controller;
 
-import loverflower.dto.UserDto;
-import loverflower.model.Result;
 import loverflower.model.User;
 import loverflower.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,22 +23,23 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+    public HttpEntity<User> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.getUserById(id));
     }
 
     @PostMapping
-    public Result addUser(@RequestBody UserDto userDto) {
-        return userService.create(userDto);
+    public User addUser(@RequestBody User user) {
+        return userService.createUser(user);
     }
 
     @PutMapping("/{id}")
-    public Result updateUser(@PathVariable Long id, @RequestBody UserDto userDto) {
-        return userService.update(id, userDto);
+    public HttpEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+        return ResponseEntity.ok(userService.updateUser(id, user));
     }
 
     @DeleteMapping("/{id}")
-    public Result deleteUser(@PathVariable Long id) {
-        return userService.delete(id);
+    public HttpEntity<User> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok().build();
     }
 }

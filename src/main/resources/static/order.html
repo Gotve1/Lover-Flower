@@ -104,6 +104,29 @@
             user-select: none;
         }
 
+        .cart {
+            position: fixed;
+            bottom: 70px;
+            right: 70px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .cart button {
+            position: relative;
+            background-color: #00cc66; /* Button color */
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            width: 100px;
+            height: 100px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
         .social-icons {
             user-select: none;
             position: absolute;
@@ -196,13 +219,17 @@
         <form>
             <input type="text" placeholder="Name*" required>
             <input type="text" placeholder="Phone number*" required>
-            <input type="text" placeholder="recipient's phone number*" required>
-            <input type="text" placeholder="Email">
-            <input type="text" placeholder="recipient's Email">
+            <input type="text" placeholder="Email" >
             <input type="text" placeholder="Address*" required>
         </form>
     </div>
     <div id="selected-flowers"></div>
+</div>
+
+<div class="cart">
+    <button>
+        BUY
+    </button>
 </div>
 
 
@@ -225,6 +252,63 @@
         { id: "13", name: "Carnation", img: "https://i.pinimg.com/736x/e5/63/aa/e563aad39f6bc8a0ae060cb47c4ed597.jpg" },
         { id: "14", name: "Delphinium", img: "https://i.pinimg.com/736x/1b/c9/a8/1bc9a805340af53fa9f057a88d4b549a.jpg" }
     ];
+
+    document.querySelector('.cart button').addEventListener('click', async function(event) {
+        event.preventDefault();
+
+        const form = document.querySelector('.details-container form');
+        const inputs = form.querySelectorAll('input[required]');
+        let allFilled = true;
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                allFilled = false;
+                input.style.borderBottom = '2px solid red';
+            } else {
+                input.style.borderBottom = '1px solid #00cc66';
+            }
+        });
+        if (!allFilled) {
+            alert('Please fill in all required fields.');
+            return false;
+        }
+
+        // Collect form data
+        const name = form.querySelector('input[placeholder="Name*"]').value.trim();
+        const phone = form.querySelector('input[placeholder="Phone number*"]').value.trim();
+        const email = form.querySelector('input[placeholder="Email"]').value.trim();
+        const address = form.querySelector('input[placeholder="Address*"]').value.trim();
+
+        // Get selected flower IDs from localStorage
+        const selectedFlowerIds = JSON.parse(localStorage.getItem('selectedFlowerIds') || '[]');
+
+        // Prepare data object (cart as string)
+        const data = {
+            name: name,
+            phone: phone,
+            email: email,
+            address: address,
+            cart: JSON.stringify(selectedFlowerIds)
+        };
+
+        // Send POST request
+        try {
+            const response = await fetch('http://localhost:8080/user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            if (response.ok) {
+                alert('Order submitted successfully!');
+                // Optionally clear form and cart here
+            } else {
+                alert('Failed to submit order.');
+            }
+        } catch (error) {
+            alert('Error submitting order.');
+        }
+    });
 
     // Replace renderSelectedFlowers with this:
     function renderSelectedFlowers() {

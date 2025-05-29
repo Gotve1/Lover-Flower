@@ -454,6 +454,30 @@
         }
         restoreCartCount();
 
+        function submitUserData(name, phone, email) {
+            return fetch('http://localhost:8080/user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    phone: phone,
+                    email: email
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    throw error;
+                });
+        }
+
         // Gallery image 3D hover effect
         document.querySelectorAll('.gallery-image').forEach(item => {
             item.addEventListener('mousemove', e => {

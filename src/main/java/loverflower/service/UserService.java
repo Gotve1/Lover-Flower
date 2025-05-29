@@ -1,7 +1,5 @@
 package loverflower.service;
 
-import loverflower.dto.UserDto;
-import loverflower.model.Result;
 import loverflower.model.User;
 import loverflower.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,45 +12,32 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    UserRepo userRepo;
+    private UserRepo userRepo;
 
     public List<User> getAllUsers() {
         return userRepo.findAll();
     }
 
     public User getUserById(Long id) {
-        return userRepo.findById(id).orElse(null);
+        return userRepo.findById(id).orElseThrow(() -> new RuntimeException("User not found with id: " + id));
     }
 
-    public Result create(UserDto userDto){
-        User user = new User();
-        user.setName(userDto.getName());
-        user.setEmail(userDto.getEmail());
-        user.setPhone(userDto.getPhone());
-        userRepo.save(user);
-        return new Result(true,"User created successfully");
+    public User createUser(User user) {
+        return userRepo.save(user);
     }
 
-    public Result update(Long id,UserDto userDto){
+    public User updateUser(Long id, User userDetails) {
+        User user = getUserById(id);
+        user.setName(userDetails.getName());
+        user.setEmail(userDetails.getEmail());
+        return userRepo.save(user);
+    }
+
+    public void deleteUser(Long id) {
         Optional<User> userOptional = userRepo.findById(id);
         if (userOptional.isPresent()){
             User user = userOptional.get();
-            user.setName(userDto.getName());
-            user.setEmail(userDto.getEmail());
-            user.setPhone(userDto.getPhone());
-            userRepo.save(user);
-            return new Result(true,"User updated successfully");
+            userRepo.delete(user);
         }
-        return new Result(false,"User not found");
     }
-
-    public Result delete(Long id){
-        Optional<User> userOptional = userRepo.findById(id);
-        if (userOptional.isPresent()){
-            userRepo.deleteById(id);
-            return new Result(true,"User deleted successfully");
-        }
-        return new Result(false,"User not found");
-    }
-
 }
