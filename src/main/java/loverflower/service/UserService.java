@@ -1,12 +1,13 @@
 package loverflower.service;
 
+import loverflower.DTO.UserRequesDto;
+import loverflower.DTO.UserResponseDto;
 import loverflower.model.User;
 import loverflower.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -14,30 +15,57 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-    public List<User> getAllUsers() {
-        return userRepo.findAll();
+    public UserResponseDto createUser(UserRequesDto dto) {
+        User user = new User();
+        user.setName(dto.getName());
+        user.setEmail(dto.getEmail());
+        user.setPhone(dto.getPhone());
+        user.setAddress(dto.getAddress());
+        user.setCart(dto.getCart());
+        user = userRepo.save(user);
+
+        return toResponseDto(user);
     }
 
-    public User getUserById(Long id) {
-        return userRepo.findById(id).orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+    public UserResponseDto getUserById(Long id) {
+        User user = userRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+        return toResponseDto(user);
     }
 
-    public User createUser(User user) {
-        return userRepo.save(user);
+    public List<UserResponseDto> getAllUsers() {
+        return userRepo.findAll().stream().map(this::toResponseDto).toList();
     }
 
-    public User updateUser(Long id, User userDetails) {
-        User user = getUserById(id);
-        user.setName(userDetails.getName());
-        user.setEmail(userDetails.getEmail());
-        return userRepo.save(user);
+    public UserResponseDto updateUser(Long id, UserRequesDto dto) {
+        User user = getUserEntity(id);
+        user.setName(dto.getName());
+        user.setEmail(dto.getEmail());
+        user.setPhone(dto.getPhone());
+        user.setAddress(dto.getAddress());
+        user.setCart(dto.getCart());
+
+        return toResponseDto(userRepo.save(user));
     }
 
-    public void deleteUser(Long id) {
-        Optional<User> userOptional = userRepo.findById(id);
-        if (userOptional.isPresent()){
-            User user = userOptional.get();
-            userRepo.delete(user);
-        }
+    public UserResponseDto deleteUser(Long id) {
+        User user = getUserEntity(id);
+        userRepo.delete(user);
+        return toResponseDto(user);
+    }
+
+    private User getUserEntity(Long id) {
+        return userRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    private UserResponseDto toResponseDto(User user) {
+        UserResponseDto dto = new UserResponseDto();
+        dto.setId(user.getId());
+        dto.setName(user.getName());
+        dto.setEmail(user.getEmail());
+        dto.setPhone(user.getPhone());
+        dto.setAddress(user.getAddress());
+        return dto;
     }
 }

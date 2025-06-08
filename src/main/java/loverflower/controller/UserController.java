@@ -1,5 +1,8 @@
 package loverflower.controller;
 
+import jakarta.validation.Valid;
+import loverflower.DTO.UserRequesDto;
+import loverflower.DTO.UserResponseDto;
 import loverflower.model.User;
 import loverflower.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,28 +21,27 @@ public class UserController {
     UserService userService;
 
     @GetMapping
-    public List<User> getAllUsers() {
+    public List<UserResponseDto> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public HttpEntity<User> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserResponseDto> getUserById(@PathVariable Long id) {
         return ResponseEntity.ok(userService.getUserById(id));
     }
 
     @PostMapping
-    public User addUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public ResponseEntity<UserResponseDto> addUser(@RequestBody @Valid UserRequesDto userDto) {
+        return ResponseEntity.ok(userService.createUser(userDto));
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        return ResponseEntity.ok(userService.updateUser(id, user));
+    public ResponseEntity<UserResponseDto> updateUser(@PathVariable Long id, @RequestBody @Valid UserRequesDto userDto) {
+        return ResponseEntity.ok(userService.updateUser(id, userDto));
     }
 
     @DeleteMapping("/{id}")
-    public HttpEntity<User> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<UserResponseDto> deleteUser(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.deleteUser(id));
     }
 }
