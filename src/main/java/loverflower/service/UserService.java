@@ -2,6 +2,7 @@ package loverflower.service;
 
 import loverflower.DTO.UserRequesDto;
 import loverflower.DTO.UserResponseDto;
+import loverflower.Exception.UserNotFoundException;
 import loverflower.model.User;
 import loverflower.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class UserService {
 
     public UserResponseDto getUserById(Long id) {
         User user = userRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+                .orElseThrow(() -> new UserNotFoundException(id));
         return toResponseDto(user);
     }
 
@@ -66,6 +67,7 @@ public class UserService {
         dto.setEmail(user.getEmail());
         dto.setPhone(user.getPhone());
         dto.setAddress(user.getAddress());
+        dto.setCart(user.getCart());
         return dto;
     }
 }
