@@ -2,7 +2,7 @@ package loverflower.service;
 
 import loverflower.DTO.UserRequesDto;
 import loverflower.DTO.UserResponseDto;
-import loverflower.Exception.UserNotFoundException;
+import loverflower.exception.UserNotFoundException;
 import loverflower.model.User;
 import loverflower.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,7 @@ public class UserService {
     public UserResponseDto createUser(UserRequesDto dto) {
         User user = new User();
         user.setName(dto.getName());
+        user.setPassword(dto.getPassword());
         user.setEmail(dto.getEmail());
         user.setPhone(dto.getPhone());
         user.setAddress(dto.getAddress());
@@ -41,6 +42,7 @@ public class UserService {
     public UserResponseDto updateUser(Long id, UserRequesDto dto) {
         User user = getUserEntity(id);
         user.setName(dto.getName());
+        user.setPassword(dto.getPassword());
         user.setEmail(dto.getEmail());
         user.setPhone(dto.getPhone());
         user.setAddress(dto.getAddress());
@@ -64,6 +66,7 @@ public class UserService {
         UserResponseDto dto = new UserResponseDto();
         dto.setId(user.getId());
         dto.setName(user.getName());
+        dto.setPassword(dto.getPassword());
         dto.setEmail(user.getEmail());
         dto.setPhone(user.getPhone());
         dto.setAddress(user.getAddress());

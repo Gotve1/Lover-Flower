@@ -13,6 +13,7 @@ public class UserRequesDto {
     @Email(message = "Invalid email format")
     private String email;
 
+    private String password;
     private String phone;
     private String address;
     private String cart;

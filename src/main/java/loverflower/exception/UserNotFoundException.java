@@ -1,4 +1,4 @@
-package loverflower.Exception;
+package loverflower.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(Long id) {

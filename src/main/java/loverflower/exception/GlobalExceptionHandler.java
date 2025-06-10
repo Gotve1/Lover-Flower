@@ -1,4 +1,4 @@
-package loverflower.Exception;
+package loverflower.exception;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;

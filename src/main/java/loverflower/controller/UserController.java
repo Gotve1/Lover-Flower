@@ -8,18 +8,20 @@ import loverflower.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
-@CrossOrigin(origins = "http://localhost:63342") // Add this annotation
+@RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:63342")
 public class UserController {
 
     @Autowired
     UserService userService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public List<UserResponseDto> getAllUsers() {
         return userService.getAllUsers();
