@@ -1,6 +1,6 @@
 # Flower Lover is a project made using Spring Framework and represents basic business logic and database utilisation.
 
-------------------------------------------------------------Main page------------------------------------------------------------------
+-----------------------------------------------------------Main page------------------------------------------------------------------
 <img width="1904" height="1079" alt="Screenshot 2026-01-11 102109" src="https://github.com/user-attachments/assets/dcf5e0fa-f440-4ca4-81c1-20e3341cffed" />
 
 -------------------------------------------------------------Popular Bouquets---------------------------------------------------------------
