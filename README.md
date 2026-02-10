@@ -1,5 +1,14 @@
 # Flower Lover is a project made using Spring Framework and represents basic business logic and database utilisation.
 
+- Full-stack Spring Boot e-commerce platform built with Spring Framework 3.4.5 and Java 21 for managing flower bouquets and arrangements
+- Secure user authentication & authorization implemented with Spring Security 6 and Thymeleaf templating for protected user sessions
+- PostgreSQL database integration with JPA/Hibernate ORM for robust data persistence and business logic handling
+- Multi-page responsive web interface featuring Main Page, Popular Bouquets showcase, Product Catalog, and Order Management pages
+- Input validation framework with Spring Boot validation starter ensuring data integrity across all user inputs
+- Interactive product discovery with dedicated Popular Bouquets section to highlight trending floral arrangements
+- Complete order processing system with dedicated order page for customer transactions and purchases
+- Clean code architecture utilizing Lombok for reducing boilerplate code and improving maintainability
+
 -----------------------------------------------------------Main page----------------------------------------------------------
 <img width="1904" height="1079" alt="Screenshot 2026-01-11 102109" src="https://github.com/user-attachments/assets/dcf5e0fa-f440-4ca4-81c1-20e3341cffed" />
 
