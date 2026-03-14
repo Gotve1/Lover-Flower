@@ -8,6 +8,7 @@ import loverflower.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -18,12 +19,12 @@ public class UserService {
 
     public UserResponseDto createUser(UserRequesDto dto) {
         User user = new User();
-        user.setName(dto.getName());
-        user.setPassword(dto.getPassword());
-        user.setEmail(dto.getEmail());
-        user.setPhone(dto.getPhone());
-        user.setAddress(dto.getAddress());
-        user.setCart(dto.getCart());
+        user.setName(dto.name());
+        user.setPassword(dto.password());
+        user.setEmail(dto.email());
+        user.setPhone(dto.phone());
+        user.setAddress(dto.address());
+        user.setCart(Arrays.toString(dto.cart()));
         user = userRepo.save(user);
 
         return toResponseDto(user);
@@ -41,12 +42,12 @@ public class UserService {
 
     public UserResponseDto updateUser(Long id, UserRequesDto dto) {
         User user = getUserEntity(id);
-        user.setName(dto.getName());
-        user.setPassword(dto.getPassword());
-        user.setEmail(dto.getEmail());
-        user.setPhone(dto.getPhone());
-        user.setAddress(dto.getAddress());
-        user.setCart(dto.getCart());
+        user.setName(dto.name());
+        user.setPassword(dto.password());
+        user.setEmail(dto.email());
+        user.setPhone(dto.phone());
+        user.setAddress(dto.address());
+        user.setCart(Arrays.toString(dto.cart()));
 
         return toResponseDto(userRepo.save(user));
     }

@@ -2,6 +2,7 @@ package loverflower.config;
 
 import loverflower.model.User;
 import loverflower.repository.UserRepo;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +25,8 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests(auth -> auth
                         //.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated()
-                        .requestMatchers("/user/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/users").permitAll()
+                        .requestMatchers("/users/**").hasAnyRole("ADMIN")
                         .anyRequest().permitAll()
                 )
                 .httpBasic(); // Or formLogin(), or JWT-based

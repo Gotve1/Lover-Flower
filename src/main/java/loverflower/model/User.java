@@ -23,7 +23,6 @@ public class User {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
 
-    @Column(nullable = false)
     private String password;
 
     @Column(unique = true)

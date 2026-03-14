@@ -220,6 +220,7 @@
             <input type="text" placeholder="Name*" required>
             <input type="text" placeholder="Phone number*" required>
             <input type="text" placeholder="Email" >
+            <input type="text" placeholder="Password*" required>
             <input type="text" placeholder="Address*" required>
         </form>
     </div>
@@ -276,6 +277,7 @@
         const name = form.querySelector('input[placeholder="Name*"]').value.trim();
         const phone = form.querySelector('input[placeholder="Phone number*"]').value.trim();
         const email = form.querySelector('input[placeholder="Email"]').value.trim();
+        const password = form.querySelector('input[placeholder="Password*"]').value.trim();
         const address = form.querySelector('input[placeholder="Address*"]').value.trim();
 
         // Get selected flower IDs from localStorage
@@ -287,12 +289,14 @@
             phone: phone,
             email: email,
             address: address,
-            cart: JSON.stringify(selectedFlowerIds)
+            password: password,
+            // cart: JSON.stringify(selectedFlowerIds)
+            cart: selectedFlowerIds
         };
 
         // Send POST request
         try {
-            const response = await fetch('http://localhost:8080/user', {
+            const response = await fetch('http://localhost:8080/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
